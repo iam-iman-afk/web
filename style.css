@@ -1,0 +1,1470 @@
+@font-face {
+  font-family: 'AbarLow';
+  font-style: normal;
+  font-weight: normal;
+  src: url('woff/AbarLow-Regular.woff2') format('woff2'),
+       url('woff/AbarLow-Regular.woff') format('woff');
+}
+
+body {
+  margin: 0;
+  font-family: 'AbarLow', Arial, sans-serif;
+  background-color: #fff;
+  color: #2a2a2a;
+  line-height: 1.7;
+  scroll-behavior: smooth;
+}
+
+header {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 20px 60px;
+  border-bottom: 1px solid #ddd;
+  background: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  justify-self: start;
+  font-size: 22px;
+  font-weight: bold;
+  color: #2b2b2b;
+}
+
+nav {
+  justify-self: center;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  margin: 0;
+  padding: 10px;
+}
+
+nav a {
+  position: relative;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  padding-bottom: 5px;
+  transition: color 0.3s ease;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background-color: #b08a65;
+  transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+nav a:hover {
+  color: #b08a65;
+}
+
+nav li:last-child {
+  margin-right: 25px;
+}
+
+.btn {
+  background-color: #b08a65;
+  color: #fff !important;
+  padding: 10px;
+  border-radius: 3px;
+  border: 1px solid #b08a65;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: block;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.tn {
+  color: #fff !important;
+  padding: 10px;
+  border-radius: 3px;
+  border: 1px solid #b08a65;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  background-color: sandybrown;
+  display: block;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.tn:hover {
+  background-color: #fff;
+  color: #b08a65 !important;
+  border: 1px solid #b08a65;
+}
+
+.btn:hover {
+  background-color: #fff;
+  color: #b08a65 !important;
+  border: 1px solid #b08a65;
+}
+
+.hero {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.hero .slide {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  opacity: 0;
+  transition: left 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+@media (max-width: 768px) {
+  .hero .slide {
+    background-attachment: scroll;
+  }
+}
+/* ✅ هر اسلاید تصویر خودش را دارد */
+.hero .slide:nth-child(1) {
+  background-image: url("https://wallpaperbat.com/img/453581-photography-desktop-wallpaper-top-free-photography-desktop-background.jpg");
+}
+
+.hero .slide:nth-child(2) {
+  background-image: url("images/b2.webp");
+}
+
+.hero .slide:nth-child(3) {
+  background-image: url("images/b3.webp");
+}
+
+
+
+.slide.active {
+  left: 0;
+  opacity: 1;
+}
+
+.overlay {
+  text-align: center;
+  color: #fff;
+  z-index: 2;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.overlay h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.overlay h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+.slider-controls {
+  position: absolute;
+  bottom: 40px; /* 👈 جایگزین top: 50% */
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  font-size: 40px;
+  cursor: pointer;
+  padding: 0 40px;
+  z-index: 3;
+}
+
+.slider-controls span {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 8px 15px;
+  border-radius: 5px;
+  transition: 0.3s ease;
+}
+
+.slider-controls span:hover {
+  background: rgba(176, 138, 101, 0.8);
+}
+
+.slide, .portfolio-slide {
+  transition: opacity 0.8s ease, left 0.8s ease;
+}
+
+/* 🎨 افکت Fade برای اسلایدرها */
+.hero .slide,
+.portfolio-slide {
+  transition: opacity 1s ease-in-out, left 0.6s ease-in-out;
+}
+
+.hero .slide:not(.active),
+.portfolio-slide:not(.active) {
+  opacity: 0;
+  left: 100%;
+}
+
+.hero .slide.active,
+.portfolio-slide.active {
+  opacity: 1;
+  left: 0;
+}
+
+/* استایل‌های بخش پورتفولیو */
+.portfolio {
+  padding: 80px 10%;
+  text-align: center;
+  background: #fff;
+}
+
+.portfolio h2 {
+  font-size: 32px;
+  margin-bottom: 30px;
+  color: #2b2b2b;
+}
+
+.filter-buttons {
+  margin-bottom: 30px;
+}
+
+.filter-buttons button {
+  background-color: #b08a65;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: 'AbarLow', Arial, sans-serif;
+  transition: all 0.3s ease;
+}
+
+.filter-buttons button:hover,
+.filter-buttons button.active {
+  background-color: #fff;
+  color: #b08a65;
+  border: 1px solid #b08a65;
+}
+
+.portfolio-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  justify-items: center;
+}
+
+.portfolio-item {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  overflow: hidden;
+  text-align: center;
+  width: 100%;
+  max-width: 350px;
+  transition: transform 0.3s ease;
+}
+
+.portfolio-item:hover {
+  transform: translateY(-5px);
+}
+
+.portfolio-slider {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.portfolio-slide {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: left 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+.portfolio-slide.active {
+  left: 0;
+  opacity: 1;
+}
+
+.portfolio-slide img,
+.portfolio-slide video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.portfolio-item h3 {
+  font-size: 20px;
+  margin: 15px 0 10px;
+  color: #2b2b2b;
+}
+
+.portfolio-item p {
+  font-size: 14px;
+  color: #666;
+  margin: 5px 15px;
+}
+
+/* استایل‌های بخش تماس */
+.contact {
+  padding: 80px 10%;
+  text-align: center;
+  background-color: #f5f0e9;
+  border-radius: 10px;
+  margin: 40px auto;
+  max-width: 800px;
+}
+
+.contact h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+  color: #2b2b2b;
+}
+
+.contact-description {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  text-align: right;
+}
+
+.form-group label {
+  display: block;
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-family: 'AbarLow', Arial, sans-serif;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.form-group textarea {
+  height: 120px;
+  resize: vertical;
+}
+
+.submit-btn {
+  background-color: #8a7356;
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: 'AbarLow', Arial, sans-serif;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  width: fit-content;
+  margin: 0 auto;
+  transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #6f5d47;
+}
+
+.submit-btn span {
+  font-size: 14px;
+}
+
+section {
+  padding: 80px 10%;
+  text-align: center;
+}
+
+h2 {
+  font-size: 32px;
+  margin-bottom: 30px;
+  color: #2b2b2b;
+}
+
+
+footer {
+  padding: 20px;
+  text-align: center;
+  background: #f9f9f9;
+  border-top: 1px solid #eee;
+  color: #666;
+}
+
+@media (max-width: 768px) {
+  .contact {
+    padding: 40px 5%;
+  }
+  nav ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+  nav li:last-child {
+    margin-right: 0;
+  }
+}
+@media (max-width: 768px) {
+  .overlay h1 { font-size: 28px; }
+  .overlay h3 { font-size: 16px; }
+}
+/* 🌟 انیمیشن متن در اسلایدر Hero */
+.overlay {
+  text-align: center;
+  color: #fff;
+  z-index: 2;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+  max-width: 80%;
+  margin: 0 auto;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+/* وقتی اسلاید فعال شد، متن ظاهر می‌شود */
+.slide.active .overlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* تیترهای داخل اسلاید */
+.overlay h3 {
+  font-size: 22px;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
+}
+
+.overlay h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+/* ریسپانسیو برای موبایل */
+@media (max-width: 768px) {
+  .overlay h1 {
+    font-size: 30px;
+  }
+  .overlay h3 {
+    font-size: 18px;
+  }
+}
+/* From Uiverse.io by gharsh11032000 */ 
+.animated-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 16px 36px;
+  border: 4px solid;
+  border-color: transparent;
+  font-size: 16px;
+  background-color: inherit;
+  border-radius: 100px;
+  font-weight: 600;
+  color:#b08a65 ;
+  box-shadow: 0 0 0 2px #b08a65;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.bubbles-btn {
+  display: block;
+  margin-left: 0;
+  margin-right: auto;
+  text-decoration: none;
+  width: fit-content; /* اندازه دکمه به محتوایش بستگی دارد */
+}
+
+
+.animated-button svg {
+  position: absolute;
+  width: 24px;
+  fill: #b08a65;
+  z-index: 9;
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animated-button .arr-1 {
+  right: 16px;
+}
+
+.animated-button .arr-2 {
+  left: -25%;
+}
+
+.animated-button .circle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  background-color: #cc6b0a;
+  border-radius: 50%;
+  opacity: 0;
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animated-button .text {
+  position: relative;
+  z-index: 1;
+  transform: translateX(-12px);
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.animated-button:hover {
+  box-shadow: 0 0 0 12px transparent;
+  color: #b08a65;
+  border-radius: 12px;
+}
+
+.animated-button:hover .arr-1 {
+  right: -25%;
+}
+
+.animated-button:hover .arr-2 {
+  left: 16px;
+}
+
+.animated-button:hover .text {
+  transform: translateX(12px);
+}
+
+.animated-button:hover svg {
+  fill: #b08a65;
+}
+
+.animated-button:active {
+  scale: 0.95;
+  box-shadow: 0 0 0 4px #b08a65;
+}
+
+.animated-button:hover .circle {
+  width: 220px;
+  height: 220px;
+  opacity: 1;
+}
+/* From Uiverse.io by satyamchaudharydev */ 
+/* === removing default button style ===*/
+.button {
+  margin: 0;
+  height: auto;
+  background: transparent;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+}
+
+/* button styling */
+.button {
+  --border-right: 6px;
+  --text-stroke-color:#b08a65;
+  --animation-color: #b08a65;
+  --fs-size: 2em;
+  letter-spacing: 3px;
+  text-decoration: none;
+  font-size: var(--fs-size);
+  font-family: "Arial";
+  position: relative;
+  text-transform: uppercase;
+  color: transparent;
+  -webkit-text-stroke: 1px var(--text-stroke-color);
+}
+/* this is the text, when you hover on button */
+.hover-text {
+  position: absolute;
+  box-sizing: border-box;
+  content: attr(data-text);
+  color: var(--animation-color);
+  width: 0%;
+  inset: 0;
+  border-right: var(--border-right) solid var(--animation-color);
+  overflow: hidden;
+  transition: 0.5s;
+  -webkit-text-stroke: 1px var(--animation-color);
+}
+/* hover */
+.button:hover .hover-text {
+  width: 100%;
+  filter: drop-shadow(0 0 23px var(--animation-color))
+}
+/* From Uiverse.io by ElSombrero2 */ 
+.post {
+  overflow: visible;
+  width: 190px;
+  height: 254px;
+}
+
+.content {
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 300ms;
+  box-shadow: 0px 0px 10px 1px #000000ee;
+  border-radius: 5px;
+}
+
+.front, .back {
+  background-color: #151515;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.back {
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.back::before {
+  position: absolute;
+  content: ' ';
+  display: block;
+  width: 160px;
+  height: 160%;
+  background: linear-gradient(90deg, transparent, #ff9966, #ff9966, #ff9966, #ff9966, transparent);
+  animation: rotation_481 5000ms infinite linear;
+}
+
+.back-content {
+  position: absolute;
+  width: 99%;
+  height: 99%;
+  background-color: #151515;
+  border-radius: 5px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.post:hover .content {
+  transform: rotateY(180deg);
+}
+
+@keyframes rotation_481 {
+  0% {
+    transform: rotateZ(0deg);
+  }
+
+  0% {
+    transform: rotateZ(360deg);
+  }
+}
+
+.front {
+  transform: rotateY(180deg);
+  color: white;
+}
+
+.front .front-content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.front-content .badge {
+  background-color: #00000055;
+  padding: 2px 10px;
+  border-radius: 10px;
+  backdrop-filter: blur(2px);
+  width: fit-content;
+}
+
+.description {
+  box-shadow: 0px 0px 10px 5px #00000088;
+  width: 100%;
+  padding: 10px;
+  background-color: #00000099;
+  backdrop-filter: blur(5px);
+  border-radius: 5px;
+}
+
+.title {
+  font-size: 11px;
+  max-width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.title p {
+  width: 50%;
+}
+
+.post-footer {
+  color: #ffffff88;
+  margin-top: 5px;
+  font-size: 8px;
+}
+
+.front .img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.circle {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background-color: #ffbb66;
+  position: relative;
+  filter: blur(15px);
+  animation: floating 2600ms infinite linear;
+}
+
+#bottom {
+  background-color: #ff8866;
+  left: 50px;
+  top: 0px;
+  width: 150px;
+  height: 150px;
+  animation-delay: -800ms;
+}
+
+#right {
+  background-color: #ff2233;
+  left: 160px;
+  top: -80px;
+  width: 30px;
+  height: 30px;
+  animation-delay: -1800ms;
+}
+
+@keyframes floating {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(10px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+@media (max-width: 768px) {
+
+}
+/* From Uiverse.io by gharsh11032000 */ 
+.card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 320px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  padding: 32px;
+  overflow: hidden;
+  border-radius: 10px;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  color: #080707;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.content .heading {
+  font-weight: 700;
+  font-size: 32px;
+}
+
+.content .para {
+  line-height: 1.5;
+}
+
+.content .btn {
+  color: #0a0909;
+  text-decoration: none;
+  padding: 10px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(-45deg, #f89b29 0%, #e6b515 100% );
+  border-radius: 5px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(-45deg, #f89b29 0%, #775b10 100% );
+  z-index: -1;
+  transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.card:hover::before {
+  height: 100%;
+}
+
+.card:hover {
+  box-shadow: none;
+}
+
+.card:hover .btn {
+  color: #212121;
+  background: #030303;
+}
+
+.content .btn:hover {
+  outline: 2px solid #e8e8e8;
+  background: transparent;
+  color: #0a0a0a;
+}
+
+.content .btn:active {
+  box-shadow: none;
+}
+/* ==== LIGHTBOX ==== */
+.modal {
+  display: none; position: fixed; z-index: 9999; padding-top: 80px;
+  left: 0; top: 0; width: 100%; height: 100%; overflow: auto;
+  background-color: rgba(0,0,0,0.95); direction: ltr;
+}
+.modal-content {margin:auto;display:block;width:90%;max-width:1100px;position:relative;}
+#lightboxSlides .lightbox-slide {display:none;text-align:center;}
+#lightboxSlides .lightbox-slide.active {display:block;}
+#lightboxSlides .lightbox-slide img,
+#lightboxSlides .lightbox-slide iframe {
+  width:100%; max-height:80vh; object-fit:contain;
+  border:3px solid #b08a65; border-radius:8px;
+  box-shadow:0 0 30px rgba(176,138,101,.4);
+}
+.close {position:absolute;top:15px;right:35px;color:#fff;font-size:50px;font-weight:bold;transition:.3s;z-index:10000;}
+.close:hover {color:#b08a65;transform:scale(1.1);}
+.prev,.next {
+  cursor:pointer;position:absolute;top:50%;padding:20px;margin-top:-50px;
+  color:white;font-weight:bold;font-size:40px;transition:.6s;
+  background:rgba(176,138,101,.6);border-radius:50%;width:60px;height:60px;
+  display:flex;align-items:center;justify-content:center;
+}
+.prev {left:10px;} .next {right:10px;}
+@media (max-width: 480px) {
+  .prev, .next { width: 50px; height: 50px; font-size: 30px; }
+}
+.prev:hover,.next:hover {background:#b08a65;transform:scale(1.1);}
+.caption-container {text-align:center;background:#111;padding:10px 20px;color:#fff;font-size:18px;font-family:'Vazirmatn',sans-serif;}
+#lightboxThumbs {padding:20px 40px;display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:10px;}
+#lightboxThumbs .column {width:100px;cursor:pointer;opacity:.6;transition:.3s;border:2px solid transparent;}
+#lightboxThumbs .column:hover,#lightboxThumbs .column.active {opacity:1;border-color:#b08a65;}
+#lightboxThumbs img {width:100%;height:60px;object-fit:cover;border-radius:4px;}
+
+/* گالری پورتفولیو */
+.portfolio-gallery {
+  position:relative;overflow:hidden;cursor:pointer;border-radius:8px;height:200px;
+}
+.portfolio-gallery img {
+  width:100%;height:100%;object-fit:cover;transition:transform .4s;
+}
+.portfolio-gallery:hover img {transform:scale(1.05);}
+.play-icon {
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:60px;height:60px;background:rgba(176,138,101,.9);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-size:24px;color:#fff;
+  opacity:0;transition:.4s;pointer-events:none;
+}
+.portfolio-gallery:hover .play-icon {opacity:1;}
+:root {
+  --gold: #b08a65;        /* طلایی اصلی */
+  --gold-dark: #8a6b47;   /* طلایی تیره */
+  --gold-light: #f5e6d3;  /* کرم طلایی */
+  --sand: #f9f5f0;        /* پس‌زمینه گرم */
+}
+/* بخش بلاگ (۳ کارت افقی) */
+#pricing { background: var(--sand); padding: 100px 10% !important; }
+#pricing h2 { color: var(--gold-dark); font-size: 38px; position: relative; }
+#pricing h2::after {
+  content: ''; position: absolute; bottom: -12px; left: 50%; transform: translateX(-50%);
+  width: 80px; height: 4px; background: var(--gold); border-radius: 2px;
+}
+
+.cards { gap: 40px; margin-top: 60px;   display: flex;
+  justify-content: center;
+}
+.card {
+  width: 340px; border-radius: 20px; overflow: hidden;
+  box-shadow: 0 15px 40px rgba(176,138,101,.2);
+  transition: all .4s ease;
+  background: #fff;
+}
+.card:hover {
+  transform: translateY(-15px);
+  box-shadow: 0 25px 50px rgba(176,138,101,.35);
+}
+.card .content {
+  padding: 30px 20px; text-align: center;
+}
+.card .heading {
+  font-size: 26px; color: var(--gold-dark); margin-bottom: 12px;
+  font-weight: 700;
+}
+.card .para {
+  color: #666; font-size: 15px; line-height: 1.7; margin-bottom: 20px;
+}
+.card .btn {
+  background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+  color: #fff; padding: 12px 32px; border-radius: 30px;
+  font-weight: 600; letter-spacing: 1px;
+  box-shadow: 0 5px 15px rgba(176,138,101,.4);
+  transition: all .3s;
+}
+.card .btn:hover {
+  background: var(--gold-dark);
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(176,138,101,.5);
+}
+/* عکس بلاگ */
+.blog-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 20px 20px 0 0;
+}
+
+/* کارت‌های بلاگ */
+.cards {
+  gap: 40px;
+  margin-top: 60px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.card {
+  width: 340px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(176,138,101,.25);
+  background: #fff;
+  transition: all .4s ease;
+}
+.card:hover {
+  transform: translateY(-15px);
+  box-shadow: 0 25px 50px rgba(176,138,101,.4);
+}
+.card .content {
+  padding: 30px 20px;
+  text-align: center;
+}
+.card .heading {
+  font-size: 26px;
+  color: #8a6b47;
+  margin-bottom: 12px;
+}
+.card .para {
+  color: #666;
+  font-size: 15px;
+  line-height: 1.7;
+}
+.card .btn {
+  background: linear-gradient(135deg, #b08a65, #8a6b47);
+  color: #fff;
+  padding: 12px 32px;
+  border-radius: 30px;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 15px;
+  box-shadow: 0 5px 15px rgba(176,138,101,.4);
+  transition: all .3s;
+}
+.card .btn:hover {
+  background: #8a6b47;
+  transform: scale(1.05);
+}
+
+/* تعرفه‌ها - ۳ کارت کنار هم */
+.pricing-grid {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-top: 50px;
+}
+.post {
+  width: 260px !important;
+}
+.price-btn {
+  background: #b08a65;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 14px;
+  display: inline-block;
+  margin-top: 15px;
+  transition: .3s;
+}
+.price-btn:hover {
+  background: #8a6b47;
+  transform: scale(1.05);
+}
+/* ==================== بخش تعرفه‌ها ==================== */
+#blog {
+  background: linear-gradient(135deg, #fdf8f3 0%, #f9f5f0 100%);
+  padding: 100px 10% !important;
+  position: relative;
+  overflow: hidden;
+}
+#blog::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: url('images/pattern-gold.png') repeat;
+  opacity: 0.03;
+  pointer-events: none;
+}
+#blog h2 {
+  color: #8a6b47;
+  font-size: 42px;
+  position: relative;
+  margin-bottom: 20px;
+}
+#blog h2::after {
+  content: '';
+  position: absolute;
+  bottom: -15px; left: 50%;
+  transform: translateX(-50%);
+  width: 120px; height: 5px;
+  background: linear-gradient(90deg, transparent, #b08a65, transparent);
+  border-radius: 3px;
+}
+
+/* کارت‌های تعرفه */
+.pricing-grid {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  flex-wrap: wrap;
+  margin-top: 60px;
+}
+.post {
+  width: 290px !important;
+  height: 380px;
+  border-radius: 24px;
+  box-shadow: 0 20px 50px rgba(176,138,101,.3);
+  transition: all .4s ease;
+  background: #fff;
+}
+.post:hover {
+  transform: translateY(-20px);
+  box-shadow: 0 30px 70px rgba(176,138,101,.45);
+}
+
+/* پشت کارت (back) */
+.back {
+  background: linear-gradient(135deg, #b08a65, #8a6b47) !important;
+}
+.back-content strong {
+  color: #fff !important;
+  text-shadow: 0 2px 10px rgba(0,0,0,.3);
+}
+
+/* روی کارت (front) */
+.front {
+  background: rgba(255,255,255,.97);
+  backdrop-filter: blur(10px);
+}
+.front-content {
+  padding: 20px;
+}
+.badge {
+  background: #b08a65 !important;
+  color: #fff;
+}
+.title p {
+  color: #8a6b47;
+}
+.planter {
+  color: #b08a65;
+  font-weight: 700;
+  font-size: 18px;
+  margin: 15px 0;
+}
+
+/* دکمه قیمت */
+.price-btn {
+  background: linear-gradient(135deg, #b08a65, #8a6b47);
+  color: #fff;
+  padding: 12px 28px;
+  border-radius: 50px;
+  font-weight: 600;
+  box-shadow: 0 8px 20px rgba(176,138,101,.4);
+  transition: all .3s;
+}
+.price-btn:hover {
+  background: #8a6b47;
+  transform: scale(1.08);
+  box-shadow: 0 12px 30px rgba(176,138,101,.6);
+}
+/* ============= انیمیشن کارت ۳D طلایی ============= */
+.pricing-3d {
+  perspective: 1500px;
+  padding: 120px 10% !important;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+  position: relative;
+  overflow: hidden;
+}
+.pricing-3d::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: radial-gradient(circle at 50% 50%, #b08a6520 0%, transparent 70%);
+  pointer-events: none;
+  animation: pulse 8s infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+}
+
+.pricing-grid {
+  gap: 50px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* کارت ۳D */
+.card-3d {
+  width: 320px;
+  height: 460px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.card-3d:hover {
+  transform: translateY(-20px) rotateY(5deg) rotateX(5deg);
+}
+
+/* داخل کارت */
+.card-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.card-3d:hover .card-inner {
+  transform: rotateY(180deg);
+}
+
+/* روی کارت */
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 24px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(176, 138, 101, 0.4);
+  background: linear-gradient(135deg, #fff 0%, #f9f5f0 100%);
+}
+.card-back {
+  transform: rotateY(180deg);
+  background: linear-gradient(135deg, #b08a65, #8a6b47);
+  color: #fff;
+}
+
+/* ذرات درخشان */
+.sparkles {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+  background: 
+    radial-gradient(circle at 20% 20%, #fff 1px, transparent 1px),
+    radial-gradient(circle at 80% 80%, #fff 1px, transparent 1px),
+    radial-gradient(circle at 50% 10%, #fff 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: sparkle 4s linear infinite;
+}
+@keyframes sparkle {
+  0% { background-position: 0 0, 0 0, 0 0; }
+  100% { background-position: 50px 50px, -50px -50px, 30px 30px; }
+}
+
+/* متن */
+.card-front h3, .card-back h3 {
+  font-size: 28px;
+  margin: 0 0 15px;
+  color: #8a6b47;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+.card-back h3 { color: #fff; }
+
+.price {
+  font-size: 36px;
+  font-weight: 700;
+  color: #b08a65;
+  margin: 10px 0;
+  text-shadow: 0 3px 15px rgba(176,138,101,0.4);
+}
+.card-back .price { color: #fff; }
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+ul li {
+  margin: 10px 0;
+  position: relative;
+  padding-right: 25px;
+  color: #666;
+}
+ul li::before {
+  content: '✦';
+  color: #b08a65;
+  position: absolute;
+  right: 0;
+  font-size: 18px;
+}
+.card-back ul li { color: #fff9; }
+.card-back ul li::before { content: '◆'; color: #fff; }
+
+/* دکمه درخشان */
+.glow-btn {
+  margin-top: 20px;
+  padding: 14px 36px;
+  background: linear-gradient(45deg, #b08a65, #d4af37);
+  color: #fff;
+  border: none;
+  border-radius: 50px;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 10px 30px rgba(176,138,101,0.5);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s;
+}
+.glow-btn::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  transition: left 0.7s;
+}
+.glow-btn:hover::before {
+  left: 100%;
+}
+.glow-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(176,138,101,0.7);
+}
+/* در style.css */
+.hamburger {
+  display: none;
+  cursor: pointer;
+  font-weight: bold;
+  color: #b08a65;
+}
+
+@media (max-width: 768px) {
+  .hamburger { display: block; }
+  .nav-links {
+    position: absolute;
+    top: 100%; right: 0;
+    background: white;
+    width: 100%;
+    flex-direction: column;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  .nav-links.open { max-height: 400px; }
+}
+/* هدر ریسپانسیو */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  position: sticky;
+  top: 0;
+  background: #fff;
+  z-index: 1000;
+  border-bottom: 1px solid #eee;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 20px;
+  color: #b08a65;
+}
+
+/* همبرگری */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1001;
+}
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background: #b08a65;
+  transition: 0.3s;
+}
+.hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(7px, -6px); }
+
+/* منو موبایل */
+.nav-desktop {
+  display: flex;
+  gap: 20px;
+}
+.nav-desktop ul {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.nav-desktop a {
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* موبایل */
+@media (max-width: 768px) {
+  .hamburger { display: flex; }
+  .nav-desktop {
+    position: fixed;
+    top: 0; right: -100%;
+    width: 70%;
+    height: 100vh;
+    background: #fff;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: right 0.4s ease;
+    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+  }
+  .nav-desktop.active { right: 0; }
+  .nav-desktop ul {
+    flex-direction: column;
+    gap: 30px;
+    font-size: 18px;
+  }
+  .mobile-hidden { display: none; }
+}
+/* انیمیشن‌های ورود */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  background: #b08a65;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.4s ease;
+  box-shadow: 0 5px 15px rgba(176,138,101,.5);
+  z-index: 999;
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.back-to-top:hover {
+  background: #8a6b47;
+  transform: translateY(-5px);
+}
+
+.back-to-top svg {
+  width: 20px;
+  height: 20px;
+  fill: white;
+}
